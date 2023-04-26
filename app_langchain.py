@@ -1,4 +1,5 @@
 import os 
+import sys
 
 import streamlit as st 
 from langchain.llms import OpenAI
@@ -46,6 +47,10 @@ wiki = WikipediaAPIWrapper()
 
 # Show stuff to the screen if there's a prompt
 if prompt: 
+    st.write(hf_llm("translate English to Korean: " + prompt))
+    
+    sys.exit()
+    
     title = title_chain.run(prompt)
     wiki_research = wiki.run(prompt) 
     script = script_chain.run(title=title, wikipedia_research=wiki_research)
