@@ -18,14 +18,14 @@ st.title('this is title')
 st.header('this is header')
 st.subheader('this is subheader')
 
-#from langchain import PromptTemplate, HuggingFaceHub, LLMChain
+from langchain import PromptTemplate, HuggingFaceHub, LLMChain
 
 template = """Question: {question}
 
 Answer: Let's think step by step."""
 
-#question_prompt = PromptTemplate(template=template, input_variables=["question"])
-#llm=HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":1e-10})
+question_prompt = PromptTemplate(template=template, input_variables=["question"])
+llm=HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":1e-10})
 
 question = "When was Google founded?"
 
