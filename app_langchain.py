@@ -48,9 +48,9 @@ if prompt:
     script = script_chain.run(title=title, wikipedia_research=wiki_research)
 
     st.write(title) 
-    llm("translate English to Korean: " + title)
+    st.write(llm("translate English to Korean: " + title))
     st.write(script) 
-    llm("translate English to Korean: " + script)
+    st.write((llm("translate English to Korean: " + script))
 
     with st.expander('Title History'): 
         st.info(title_memory.buffer)
