@@ -14,9 +14,9 @@ from langchain import HuggingFaceHub
 os.environ['OPENAI_API_KEY'] = st.secrets["apikey"]
 os.environ["HUGGINGFACEHUB_API_TOKEN"] =  st.secrets["hf_token"]
 
-st.title('this is title')
-st.header('this is header')
-st.subheader('this is subheader')
+#st.title('this is title')
+#st.header('this is header')
+#st.subheader('this is subheader')
 
 from langchain import PromptTemplate, HuggingFaceHub, LLMChain
 
@@ -42,6 +42,7 @@ question_chain = LLMChain(prompt=question_prompt, llm=llm, verbose=True, memory=
 #st.title('🦜🔗 Top 10 Resources')
 
 #print(question_chain.run(question))
+st.write(question)
 st.write(question_chain.run(question))
 
 
