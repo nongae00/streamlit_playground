@@ -20,24 +20,25 @@ os.environ["HUGGINGFACEHUB_API_TOKEN"] =  st.secrets["hf_token"]
 
 from langchain import PromptTemplate, HuggingFaceHub, LLMChain
 
-template = """Question: {question}
+#template = """Question: {question}
+#
+#Answer: """  
 
-Answer: """  
 #Let's think step by step.
 
-question_prompt = PromptTemplate(template=template, input_variables=["question"])
+#question_prompt = PromptTemplate(template=template, input_variables=["question"])
 llm=HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":1e-10})
 
-question = "Who was the 12th person on the moon?" #"When was Google founded?"
+#question = "Who was the 12th person on the moon?" #"When was Google founded?"
 
 #title_memory = ConversationBufferMemory(input_key='topic', memory_key='chat_history')
-question_memory = ConversationBufferMemory(input_key='question', memory_key='chat_history')
+#question_memory = ConversationBufferMemory(input_key='question', memory_key='chat_history')
 
 
 # Llms
 #script_chain = LLMChain(llm=llm, prompt=script_template, verbose=True, output_key='script', memory=script_memory)
 
-question_chain = LLMChain(prompt=question_prompt, llm=llm, verbose=True, memory=question_memory)
+#question_chain = LLMChain(prompt=question_prompt, llm=llm, verbose=True, memory=question_memory)
 
 #st.title('🦜🔗 Top 10 Resources')
 
@@ -67,6 +68,15 @@ prompt = st.text_input('Plug in your prompt here')
     
 #)
 
+#template = """Question: {question}
+#
+#Answer: """  
+
+question_prompt = PromptTemplate(input_variables=["question"],
+                                template = """Question: {question} 
+                                Answer: """  )
+
+
 #hf_prompt = PromptTemplate(
 #    input_variables=["topic"],
 #    template="translate English to Korean: {topic}"
@@ -76,6 +86,7 @@ prompt = st.text_input('Plug in your prompt here')
 # Memory 
 #title_memory = ConversationBufferMemory(input_key='topic', memory_key='chat_history')
 #script_memory = ConversationBufferMemory(input_key='title', memory_key='chat_history')
+question_memory = ConversationBufferMemory(input_key='question', memory_key='chat_history')
 
 
 # Llms
@@ -84,6 +95,8 @@ prompt = st.text_input('Plug in your prompt here')
 #script_chain = LLMChain(llm=llm, prompt=script_template, verbose=True, output_key='script', memory=script_memory)
 #hf_chain = LLMChain(llm=hf_llm, prompt=hf_prompt, verbose=True, output_key='translate', memory=script_memory) 
 #memory=ConversationBufferWindowMemory(k=2))
+question_chain = LLMChain(prompt=question_prompt, llm=llm, verbose=True, memory=question_memory)
+
 
 #wiki = WikipediaAPIWrapper()
 
