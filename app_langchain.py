@@ -47,7 +47,7 @@ if prompt:
     wiki_research = wiki.run(prompt) 
     script = script_chain.run(title=title, wikipedia_research=wiki_research)
 
-    st.write(v) 
+    st.write(title) 
     llm("translate English to Korean: " + title)
     st.write(script) 
     llm("translate English to Korean: " + script)
