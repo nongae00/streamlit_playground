@@ -19,25 +19,25 @@ st.header('this is header')
 st.subheader('this is subheader')
 
 #from langchain import PromptTemplate, HuggingFaceHub, LLMChain
-'''
+
 template = """Question: {question}
 
 Answer: Let's think step by step."""
 
-question_prompt = PromptTemplate(template=template, input_variables=["question"])
-llm=HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":1e-10})
+#question_prompt = PromptTemplate(template=template, input_variables=["question"])
+#llm=HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":1e-10})
 
 question = "When was Google founded?"
 
 #title_memory = ConversationBufferMemory(input_key='topic', memory_key='chat_history')
-question_memory = ConversationBufferMemory(input_key='title', memory_key='chat_history')
+#question_memory = ConversationBufferMemory(input_key='title', memory_key='chat_history')
 
 
 # Llms
 #script_chain = LLMChain(llm=llm, prompt=script_template, verbose=True, output_key='script', memory=script_memory)
 
-question_chain = LLMChain(prompt=question_prompt, llm=llm, verbose=True, memory=question_memory)
-'''
+#question_chain = LLMChain(prompt=question_prompt, llm=llm, verbose=True, memory=question_memory)
+
 st.title('🦜🔗 Top 10 Resources')
 
 #print(question_chain.run(question))
