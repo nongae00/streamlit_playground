@@ -26,9 +26,9 @@ title_template = PromptTemplate(
 )
 
 script_template = PromptTemplate(
-    input_variables = [k, 'title', 'wikipedia_research'], 
+    input_variables = ['title', 'wikipedia_research'], 
     #template='write me a youtube video script based on this title TITLE: {title} while leveraging this wikipedia reserch:{wikipedia_research} '
-    template='What are the top {k} resources to learn {title} in 2023 while leveraging this wikipedia research:{wikipedia_research}?'
+    template='What are the top 10 resources to learn {title} in 2023 while leveraging this wikipedia research:{wikipedia_research}?'
     
 )
 
