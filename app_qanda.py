@@ -122,4 +122,6 @@ if prompt:
 #        st.info(script_memory.buffer)
 #    with st.expander('Wikipedia Research'): 
 #        st.info(wiki_research)
+    with st.expander('Q&A History'): 
+        st.info(question_memory.buffer)
 
