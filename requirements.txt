@@ -1,4 +1,6 @@
 scikit-learn
 matplotlib
-yfinance
-pandas
+#yfinance
+#pandas
+langchain
+openai
