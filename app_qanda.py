@@ -9,6 +9,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper 
 
 from langchain import HuggingFaceHub
+from langchain.memory import ConversationBufferWindowMemory
 
 os.environ['OPENAI_API_KEY'] = st.secrets["apikey"]
 os.environ["HUGGINGFACEHUB_API_TOKEN"] =  st.secrets["hf_token"]
