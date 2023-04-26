@@ -50,7 +50,7 @@ if prompt:
     st.write(title) 
     st.write(llm("translate English to Korean: " + title))
     st.write(script) 
-    st.write((llm("translate English to Korean: " + script))
+    st.write(llm("translate English to Korean: " + script))
 
     with st.expander('Title History'): 
         st.info(title_memory.buffer)
