@@ -16,7 +16,7 @@ hf_llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature"
 k = 10
 
 # App framework
-st.title('🦜🔗 YouTube GPT Creator')
+st.title('🦜🔗 Top {k} Resources')
 prompt = st.text_input('Plug in your prompt here') 
 
 # Prompt templates
