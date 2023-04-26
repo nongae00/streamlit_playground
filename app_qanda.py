@@ -95,7 +95,7 @@ question_memory = ConversationBufferMemory(input_key='question', memory_key='cha
 #script_chain = LLMChain(llm=llm, prompt=script_template, verbose=True, output_key='script', memory=script_memory)
 #hf_chain = LLMChain(llm=hf_llm, prompt=hf_prompt, verbose=True, output_key='translate', memory=script_memory) 
 #memory=ConversationBufferWindowMemory(k=2))
-question_chain = LLMChain(prompt=question_prompt, llm=llm, verbose=True, memory=question_memory)
+question_chain = LLMChain(prompt=question_prompt, llm=llm, verbose=True, output_key='question',memory=question_memory)
 
 
 #wiki = WikipediaAPIWrapper()
