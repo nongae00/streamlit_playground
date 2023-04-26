@@ -33,6 +33,8 @@ question_memory = ConversationBufferMemory(input_key='title', memory_key='chat_h
 
 question_chain = LLMChain(prompt=question_prompt, llm=llm, verbose=True, memory=question_memory)
 
+st.title('🦜🔗 Top 10 Resources')
+
 print(question_chain.run(question))
 st.write(question_chain.run(question))
 
