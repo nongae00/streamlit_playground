@@ -9,7 +9,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper 
 
 from langchain import HuggingFaceHub
-from langchain.memory import ConversationBufferWindowMemory
+#from langchain.memory import ConversationBufferWindowMemory
 
 os.environ['OPENAI_API_KEY'] = st.secrets["apikey"]
 os.environ["HUGGINGFACEHUB_API_TOKEN"] =  st.secrets["hf_token"]
@@ -19,15 +19,22 @@ from langchain import PromptTemplate, HuggingFaceHub, LLMChain
 template = """Question: {question}
 
 Answer: Let's think step by step."""
-prompt = PromptTemplate(template=template, input_variables=["question"])
+question_prompt = PromptTemplate(template=template, input_variables=["question"])
 llm=HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":1e-10})
 
 question = "When was Google founded?"
 
-llm_chain = LLMChain(prompt=prompt, llm=llm, memory=ConversationBufferWindowMemory(k=2))
+#title_memory = ConversationBufferMemory(input_key='topic', memory_key='chat_history')
+question_memory = ConversationBufferMemory(input_key='title', memory_key='chat_history')
 
-print(llm_chain.run(question))
-st.write(llm_chain.run(question))
+
+# Llms
+#script_chain = LLMChain(llm=llm, prompt=script_template, verbose=True, output_key='script', memory=script_memory)
+
+question_chain = LLMChain(prompt=question_prompt, llm=llm, verbose=True, memory=question_memory)
+
+print(question_chain.run(question))
+st.write(question_chain.run(question))
 
 
 '''
