@@ -23,6 +23,8 @@ llm=HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":1e-1
 
 question = "When was Google founded?"
 
+llm_chain = LLMChain(prompt=prompt, llm=llm, memory=ConversationBufferWindowMemory(k=2))
+
 print(llm_chain.run(question))
 
 
