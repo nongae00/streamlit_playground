@@ -7,8 +7,13 @@ from langchain.chains import LLMChain, SequentialChain
 from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper 
 
-os.environ['OPENAI_API_KEY'] = st.secrets["apikey"]
+from langchain import HuggingFaceHub
 
+os.environ['OPENAI_API_KEY'] = st.secrets["apikey"]
+os.environ["HUGGINGFACEHUB_API_TOKEN"] =  st.secrets["hf_token"]
+
+llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":0, "max_length":64})
+    
 # App framework
 st.title('🦜🔗 YouTube GPT Creator')
 prompt = st.text_input('Plug in your prompt here') 
@@ -42,8 +47,10 @@ if prompt:
     wiki_research = wiki.run(prompt) 
     script = script_chain.run(title=title, wikipedia_research=wiki_research)
 
-    st.write(title) 
+    st.write(v) 
+    llm("translate English to Korean: " + title)
     st.write(script) 
+    llm("translate English to Korean: " + script)
 
     with st.expander('Title History'): 
         st.info(title_memory.buffer)
