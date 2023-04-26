@@ -16,7 +16,7 @@ hf_llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature"
 k = 10
 
 # App framework
-st.title('🦜🔗 Top {k} Resources')
+st.title('🦜🔗 Top 10 Resources')
 prompt = st.text_input('Plug in your prompt here') 
 
 # Prompt templates
@@ -26,7 +26,7 @@ title_template = PromptTemplate(
 )
 
 script_template = PromptTemplate(
-    input_variables = ['title', 'wikipedia_research'], 
+    input_variables = [k, 'title', 'wikipedia_research'], 
     #template='write me a youtube video script based on this title TITLE: {title} while leveraging this wikipedia reserch:{wikipedia_research} '
     template='What are the top {k} resources to learn {title} in 2023 while leveraging this wikipedia research:{wikipedia_research}?'
     
