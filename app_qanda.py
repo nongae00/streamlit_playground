@@ -27,7 +27,7 @@ question = "When was Google founded?"
 llm_chain = LLMChain(prompt=prompt, llm=llm, memory=ConversationBufferWindowMemory(k=2))
 
 print(llm_chain.run(question))
-
+st.write(llm_chain.run(question))
 
 
 '''
