@@ -49,9 +49,9 @@ wiki = WikipediaAPIWrapper()
 if prompt: 
     st.write(hf_llm("translate English to Korean: " + prompt))
     
-    sys.exit()
+    #sys.exit()
     
-    title = title_chain.run(prompt)
+    '''title = title_chain.run(prompt)
     wiki_research = wiki.run(prompt) 
     script = script_chain.run(title=title, wikipedia_research=wiki_research)
 
@@ -67,4 +67,4 @@ if prompt:
         st.info(script_memory.buffer)
 
     with st.expander('Wikipedia Research'): 
-        st.info(wiki_research)
+        st.info(wiki_research)'''
