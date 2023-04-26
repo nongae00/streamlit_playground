@@ -1,4 +1,4 @@
-import streamlit as 
+import streamlit as st
 
 ## Markdown syntax
 st.markdown("# This is a Markdown title")
