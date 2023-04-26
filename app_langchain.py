@@ -12,8 +12,9 @@ from langchain import HuggingFaceHub
 os.environ['OPENAI_API_KEY'] = st.secrets["apikey"]
 os.environ["HUGGINGFACEHUB_API_TOKEN"] =  st.secrets["hf_token"]
 
-llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":0, "max_length":10240})
-    
+hf_llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":0, "max_length":10240})
+k = 10
+
 # App framework
 st.title('🦜🔗 YouTube GPT Creator')
 prompt = st.text_input('Plug in your prompt here') 
@@ -26,7 +27,10 @@ title_template = PromptTemplate(
 
 script_template = PromptTemplate(
     input_variables = ['title', 'wikipedia_research'], 
+    #template='write me a youtube video script based on this title TITLE: {title} while leveraging this wikipedia reserch:{wikipedia_research} '
     template='write me a youtube video script based on this title TITLE: {title} while leveraging this wikipedia reserch:{wikipedia_research} '
+    template='What are the top {k} resources to learn {title} in 2023 while leveraging this wikipedia research:{wikipedia_research}?'
+    
 )
 
 # Memory 
@@ -48,9 +52,9 @@ if prompt:
     script = script_chain.run(title=title, wikipedia_research=wiki_research)
 
     st.write(title) 
-    st.write(llm("translate English to Korean: " + title))
+    st.write(hf_llm("translate English to Korean: " + title))
     st.write(script) 
-    st.write(llm("translate English to Korean: " + script))
+    st.write(hf_llm("translate English to Korean: " + script))
 
     with st.expander('Title History'): 
         st.info(title_memory.buffer)
