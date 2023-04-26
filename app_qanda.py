@@ -22,12 +22,13 @@ from langchain import PromptTemplate, HuggingFaceHub, LLMChain
 
 template = """Question: {question}
 
-Answer: Let's think step by step."""
+Answer: """  
+#Let's think step by step.
 
 question_prompt = PromptTemplate(template=template, input_variables=["question"])
 llm=HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":1e-10})
 
-question = "When was Google founded?"
+question = "Who was the 12th person on the moon?" #"When was Google founded?"
 
 #title_memory = ConversationBufferMemory(input_key='topic', memory_key='chat_history')
 question_memory = ConversationBufferMemory(input_key='question', memory_key='chat_history')
