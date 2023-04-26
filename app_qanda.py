@@ -42,8 +42,8 @@ question_chain = LLMChain(prompt=question_prompt, llm=llm, verbose=True, memory=
 #st.title('🦜🔗 Top 10 Resources')
 
 #print(question_chain.run(question))
-st.write(question)
-st.write(question_chain.run(question))
+#st.write(question)
+#st.write(question_chain.run(question))
 
 
 
@@ -51,8 +51,8 @@ st.write(question_chain.run(question))
 #k = 10
 
 # App framework
-#st.title('🦜🔗 Top 10 Resources')
-#prompt = st.text_input('Plug in your prompt here') 
+st.title('🦜🔗 Ask a question ') #Top 10 Resources')
+prompt = st.text_input('Plug in your prompt here') 
 
 # Prompt templates
 #title_template = PromptTemplate(
@@ -88,8 +88,9 @@ st.write(question_chain.run(question))
 #wiki = WikipediaAPIWrapper()
 
 # Show stuff to the screen if there's a prompt
-#if prompt: 
+if prompt: 
 #    translate = hf_chain.run(prompt)
+    st.write(question_chain.run(prompt))
 #    st.write(translate)
     
     #sys.exit()
