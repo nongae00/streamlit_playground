@@ -13,7 +13,7 @@ from langchain import HuggingFaceHub
 os.environ['OPENAI_API_KEY'] = st.secrets["apikey"]
 os.environ["HUGGINGFACEHUB_API_TOKEN"] =  st.secrets["hf_token"]
 
-hf_llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":0, "max_length":1024})
+hf_llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":0, "max_length":512})
 k = 10
 
 # App framework
